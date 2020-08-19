@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { getNASAPictures } from "./NasaAPI";
 import PictureCard from "./components/PictureCard";
@@ -6,7 +6,9 @@ import SelectComponent from "./components/SelectorComponent";
 
 import "./App.css";
 function App() {
-  const [pictures, updatePictures] = React.useState(null);
+  const defaultFilterInDays = 60;
+  const [pictures, updatePictures] = useState(null);
+  const [sortBy, setSortBy] = useState(defaultFilterInDays);
 
   useEffect(() => {
     if (!pictures) {
@@ -22,12 +24,17 @@ function App() {
     }
   }, [pictures]);
 
+  function selectFilter(event) {
+    setSortBy(event.target.value);
+    console.log(`whats sortBY`, sortBy);
+  }
+
   console.log("response from API", pictures);
 
   return (
     <main>
       <div className="selector-box">
-        <SelectComponent />
+        <SelectComponent selectFilter={selectFilter} />
       </div>
       <div className="picture-card-container">
         {pictures &&
