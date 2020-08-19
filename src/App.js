@@ -24,7 +24,7 @@ function App() {
   console.log("response from API", pictures);
 
   return (
-    <div className="App">
+    <div className="picture-card-container">
       {pictures &&
         pictures.map((picture) => (
           <div key={picture.date}>

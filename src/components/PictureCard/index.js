@@ -1,14 +1,17 @@
 import React from "react";
 
+import "./index.css";
+
 export default function PictureCard(props) {
   return (
-    <div>
+    <div className="image-container">
       <div>{props.date}</div>
-      <div>
-        <img src={props.picture} alt="" />
-      </div>{" "}
-      <div>{props.title}</div>
-      <div>{props.photographer}</div>
+      <img src={props.picture} alt="" />
+
+      <div className="footer">
+        <div className="text-box-1">{props.title}</div>
+        <div className="text-box-2">{props.photographer}</div>
+      </div>
     </div>
   );
 }
