@@ -1,14 +1,30 @@
 body {
   background-color: #eff3f8;
 }
-.selector-box {
-  display: flex;
-  justify-content: center;
-}
 
-.picture-card-container {
-  margin: 50px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+@media (max-width: 450px) {
+  .selector-box {
+    display: flex;
+    justify-content: center;
+  }
+
+  .picture-card-container {
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+@media (min-width: 450px) {
+  .selector-box {
+    display: flex;
+    justify-content: center;
+  }
+
+  .picture-card-container {
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
