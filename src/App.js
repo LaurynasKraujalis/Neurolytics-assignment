@@ -6,6 +6,7 @@ import PictureCard from "./components/PictureCard";
 import SelectComponent from "./components/SelectorComponent";
 
 import "./App.css";
+
 function App() {
   const defaultFilterInDays = 60;
   const [pictures, updatePictures] = useState(null);
@@ -25,6 +26,7 @@ function App() {
     }
   }, [pictures]);
 
+  // Filtering functions
   function selectFilter(event) {
     setSortBy(event.target.value);
   }
@@ -37,7 +39,11 @@ function App() {
       )
     : null;
 
-  console.log(`whats filteredPictures`, filteredPictures);
+  // Loading indicator
+  function loading() {
+    return <div> Please wait while images are being loaded.</div>;
+  }
+
   return (
     <main>
       <div className="selector-box">
@@ -55,6 +61,7 @@ function App() {
               />
             </div>
           ))}
+        {pictures ? null : loading()}
       </div>
     </main>
   );
