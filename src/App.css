@@ -1,6 +1,10 @@
 body {
   background-color: #eff3f8;
 }
+.selector-box {
+  display: flex;
+  justify-content: center;
+}
 
 .picture-card-container {
   margin: 50px;

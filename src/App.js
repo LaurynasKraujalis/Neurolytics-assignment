@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 import { getNASAPictures } from "./NasaAPI";
 import PictureCard from "./components/PictureCard";
+import SelectComponent from "./components/SelectorComponent";
 
 import "./App.css";
 function App() {
@@ -24,19 +25,24 @@ function App() {
   console.log("response from API", pictures);
 
   return (
-    <div className="picture-card-container">
-      {pictures &&
-        pictures.map((picture) => (
-          <div key={picture.date}>
-            <PictureCard
-              title={picture.title}
-              picture={picture.url}
-              date={picture.date}
-              photographer={picture.copyright}
-            />
-          </div>
-        ))}
-    </div>
+    <main>
+      <div className="selector-box">
+        <SelectComponent />
+      </div>
+      <div className="picture-card-container">
+        {pictures &&
+          pictures.map((picture) => (
+            <div key={picture.date}>
+              <PictureCard
+                title={picture.title}
+                picture={picture.url}
+                date={picture.date}
+                photographer={picture.copyright}
+              />
+            </div>
+          ))}
+      </div>
+    </main>
   );
 }
 
