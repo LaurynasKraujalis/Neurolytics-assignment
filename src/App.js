@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
-import "./App.css";
-import { getNASAPictures } from "./NasaAPI";
 
+import { getNASAPictures } from "./NasaAPI";
+import PictureCard from "./components/PictureCard";
+
+import "./App.css";
 function App() {
   const [pictures, updatePictures] = React.useState(null);
 
@@ -15,11 +17,20 @@ function App() {
     }
   }, [pictures]);
 
+  console.log("response from API", pictures);
+
   return (
     <div className="App">
       {pictures &&
         pictures.map((picture) => (
-          <div key={picture.date}>{picture.title}</div>
+          <div key={picture.date}>
+            <PictureCard
+              title={picture.title}
+              picture={picture.url}
+              date={picture.date}
+              photographer={picture.copyright}
+            />
+          </div>
         ))}
     </div>
   );
