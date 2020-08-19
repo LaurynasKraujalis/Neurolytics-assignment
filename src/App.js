@@ -12,7 +12,11 @@ function App() {
       const startDate = new Date("2020-07-01T08:28:41.917Z");
       const endDate = new Date();
       getNASAPictures(startDate, endDate).then((res) => {
-        updatePictures(res);
+        updatePictures(
+          res.filter((picture) => {
+            return picture.media_type === "image";
+          })
+        );
       });
     }
   }, [pictures]);
