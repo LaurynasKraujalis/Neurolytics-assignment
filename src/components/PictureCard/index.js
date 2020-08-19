@@ -5,7 +5,7 @@ import "./index.css";
 export default function PictureCard(props) {
   return (
     <div className="image-container">
-      <div>{props.date}</div>
+      <div className="date-box">{props.date}</div>
       <img src={props.picture} alt="" />
 
       <div className="footer">
