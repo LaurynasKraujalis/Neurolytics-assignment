@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import moment from "moment";
 
 import { getNASAPictures } from "./NasaAPI";
 import PictureCard from "./components/PictureCard";
@@ -26,11 +27,17 @@ function App() {
 
   function selectFilter(event) {
     setSortBy(event.target.value);
-    console.log(`whats sortBY`, sortBy);
   }
 
-  console.log("response from API", pictures);
+  const filterMomentSelectedByUser = moment().subtract(sortBy, "days");
 
+  const filteredPictures = pictures
+    ? pictures.filter((picture) =>
+        moment(picture.date).isAfter(filterMomentSelectedByUser)
+      )
+    : null;
+
+  console.log(`whats filteredPictures`, filteredPictures);
   return (
     <main>
       <div className="selector-box">
@@ -38,7 +45,7 @@ function App() {
       </div>
       <div className="picture-card-container">
         {pictures &&
-          pictures.map((picture) => (
+          filteredPictures.map((picture) => (
             <div key={picture.date}>
               <PictureCard
                 title={picture.title}

@@ -22,7 +22,6 @@ export default function ControlledOpenSelect(props) {
 
   const handleChange = (event) => {
     setFilter(event.target.value);
-    props.selectFilter(event);
   };
 
   return (
@@ -35,13 +34,13 @@ export default function ControlledOpenSelect(props) {
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           value={filter}
-          onChange={handleChange}
+          onChange={props.selectFilter}
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={10}>Last week</MenuItem>
-          <MenuItem value={20}>Last 2 weeks</MenuItem>
+          <MenuItem value={7}>Last week</MenuItem>
+          <MenuItem value={14}>Last 2 weeks</MenuItem>
           <MenuItem value={30}>Last month</MenuItem>
         </Select>
       </FormControl>
